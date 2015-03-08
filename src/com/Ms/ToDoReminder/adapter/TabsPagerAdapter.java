@@ -5,12 +5,12 @@ package com.Ms.ToDoReminder.adapter;
  * @author https://github.com/mspegagne
  */
 
-        import com.Ms.ToDoReminder.AddFragment;
-        import com.Ms.ToDoReminder.ToDoFragment;
-        import com.Ms.ToDoReminder.HistoryFragment;
-        import android.support.v4.app.Fragment;
-        import android.support.v4.app.FragmentManager;
-        import android.support.v4.app.FragmentPagerAdapter;
+import com.Ms.ToDoReminder.AddFragment;
+import com.Ms.ToDoReminder.ToDoFragment;
+import com.Ms.ToDoReminder.HistoryFragment;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
 
 public class TabsPagerAdapter extends FragmentPagerAdapter {
 

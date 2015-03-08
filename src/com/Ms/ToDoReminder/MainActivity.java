@@ -16,7 +16,6 @@ import com.Ms.ToDoReminder.adapter.TabsPagerAdapter;
 public class MainActivity extends FragmentActivity implements ActionBar.TabListener {
 
     private ViewPager viewPager;
-    private TabsPagerAdapter mAdapter;
     private ActionBar actionBar;
     // Tab titles
     private String[] tabs = {"History", "ToDo", "Add"};
@@ -29,9 +28,11 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
         // Initilization
         viewPager = (ViewPager) findViewById(R.id.pager);
         actionBar = getActionBar();
+        assert actionBar != null;
         actionBar.setDisplayShowTitleEnabled(false);
         actionBar.setDisplayShowHomeEnabled(false);
-        mAdapter = new TabsPagerAdapter(getSupportFragmentManager());
+
+        TabsPagerAdapter mAdapter = new TabsPagerAdapter(getSupportFragmentManager());
 
         viewPager.setAdapter(mAdapter);
         actionBar.setHomeButtonEnabled(false);
@@ -41,7 +42,6 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
         for (String tab_name : tabs) {
             actionBar.addTab(actionBar.newTab().setText(tab_name)
                     .setTabListener(this));
-
         }
 
         /**
@@ -65,9 +65,6 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
             }
         });
     }
-
-
-
 
     @Override
     public void onTabReselected(Tab tab, FragmentTransaction ft) {
