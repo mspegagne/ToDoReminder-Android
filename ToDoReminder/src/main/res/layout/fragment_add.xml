@@ -1,6 +1,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 xmlns:tools="http://schemas.android.com/tools"
                 xmlns:bootstrap="http://schemas.android.com/apk/res-auto"
+                xmlns:bootstrapbutton="http://schemas.android.com/apk/res-auto"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -9,18 +10,43 @@
                 android:paddingBottom="@dimen/activity_vertical_margin"
                 tools:context=".MainActivity$PlaceholderFragment">
 
-    <TextView
-            android:id="@+id/section_label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+    <!-- rounded edit text -->
+    <com.beardedhen.androidbootstrap.BootstrapEditText
+            android:id="@+id/addTitle"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:hint="Title"
+            android:textSize="24dp"
+            bootstrapbutton:be_roundedCorners="true"
+            android:layout_gravity="start"
+            bootstrapbutton:be_state="success"
+            />
+    <!-- rounded edit text -->
+    <com.beardedhen.androidbootstrap.BootstrapEditText
+            android:id="@+id/addText"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:hint="Text"
+            android:textSize="20dp"
+            bootstrapbutton:be_roundedCorners="true"
+            android:layout_gravity="start"
+            android:layout_below="@id/addTitle"
+            bootstrapbutton:be_state="success"
+            android:lines="5"/>
     <!-- basic button -->
     <com.beardedhen.androidbootstrap.BootstrapButton
+            android:id="@+id/Save"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="Success"
-            bootstrap:bb_icon_right="fa-android"
+            android:layout_margin="20dp"
+            android:text="@string/save_button"
+            android:layout_centerHorizontal="true"
+            bootstrap:bb_icon_left="fa-hand-o-right"
             bootstrap:bb_type="success"
+            android:textSize="20sp"
+            android:layout_below="@id/addText"
             />
 
 </RelativeLayout>
