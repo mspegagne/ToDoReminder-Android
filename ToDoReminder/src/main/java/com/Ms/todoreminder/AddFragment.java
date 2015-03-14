@@ -105,8 +105,12 @@ public class AddFragment extends Fragment implements OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.Save:
-                ToDo add = new ToDo(title, text, year, month, day);
-                
+
+                Calendar date = Calendar.getInstance();
+                date.set(year, month, day);
+
+                ToDo add = new ToDo(title, text, date);
+
                 //Intent intent = new Intent(MainActivity.this, DisplayActivity.class);
                 //intent.putExtra("data", data);
                 //startActivity(intent);

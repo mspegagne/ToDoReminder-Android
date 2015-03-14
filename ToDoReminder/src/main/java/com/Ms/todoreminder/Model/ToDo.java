@@ -3,6 +3,8 @@ package com.Ms.todoreminder.Model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.util.Calendar;
+
 /**
  * @author SPEGAGNE Mathieu on 13/03/15.
  * @author https://github.com/mspegagne
@@ -11,15 +13,12 @@ public class ToDo implements Parcelable {
 
     private String title;
     private String text;
+    private Calendar date;
 
-    private int year, month, day;
-
-    public ToDo(String title, String text, int year, int month, int day) {
+    public ToDo(String title, String text, Calendar date) {
         this.title = title;
         this.text = text;
-        this.year = year;
-        this.month = month;
-        this.day = day;
+        this.date = date;
     }
 
     public String getText() {
@@ -30,17 +29,7 @@ public class ToDo implements Parcelable {
         return title;
     }
 
-    public int getYear() {
-        return year;
-    }
-
-    public int getMonth() {
-        return month;
-    }
-
-    public int getDay() {
-        return day;
-    }
+    public Calendar getDate() { return date; }
 
 
     @Override
@@ -50,6 +39,11 @@ public class ToDo implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
+
+        int month = date.get(Calendar.MONTH);
+        int year = date.get(Calendar.YEAR);
+        int day = date.get(Calendar.DAY_OF_MONTH);
+
         dest.writeString(title);
         dest.writeString(text);
         dest.writeInt(year);
@@ -73,11 +67,17 @@ public class ToDo implements Parcelable {
     };
 
     public ToDo(Parcel in) {
+        int year, month, day;
+
         this.title = in.readString();
         this.text = in.readString();
-        this.year = in.readInt();
-        this.month = in.readInt();
-        this.day = in.readInt();
+
+        year = in.readInt();
+        month = in.readInt();
+        day = in.readInt();
+
+        this.date = Calendar.getInstance();
+        this.date.set(year, month, day);
     }
 
 }
