@@ -9,6 +9,7 @@ import android.content.DialogInterface;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.Toast;
+import com.Ms.todoreminder.Model.SQLController;
 import com.Ms.todoreminder.Model.ToDo;
 
 import android.app.DatePickerDialog;
@@ -31,6 +32,7 @@ public class AddFragment extends Fragment implements OnClickListener {
     private EditText editText = null;
     private BootstrapButton save = null;
 
+    private SQLController dbController;
 
     private int year, month, day;
     private String text = null;
@@ -97,6 +99,10 @@ public class AddFragment extends Fragment implements OnClickListener {
         save = (BootstrapButton) AddView.findViewById(R.id.Save);
         save.setOnClickListener(this);
 
+
+        dbController = new SQLController(this.getActivity());
+        dbController.open();
+
         return AddView;
     }
 
@@ -111,11 +117,18 @@ public class AddFragment extends Fragment implements OnClickListener {
 
                 ToDo add = new ToDo(title, text, date);
 
+                long res = dbController.insert(title, text, year, month, day);
+
+                if(res == -1)
+                    Toast.makeText(v.getContext(), "Error", Toast.LENGTH_SHORT).show();
+                else
+                    Toast.makeText(v.getContext(), "Saved", Toast.LENGTH_SHORT).show();
+
+
                 //Intent intent = new Intent(MainActivity.this, DisplayActivity.class);
                 //intent.putExtra("data", data);
                 //startActivity(intent);
 
-                Toast.makeText(v.getContext(), add.getText(), Toast.LENGTH_SHORT).show();
 
                 //switchFragment(Fragment.TAG);
 

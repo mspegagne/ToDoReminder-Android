@@ -8,5 +8,6 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="save_button">Save</string>
+    <string name="empty_list_text">No ToDo</string>
 
 </resources>
