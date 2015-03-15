@@ -1,8 +1,17 @@
 package com.Ms.todoreminder.Model;
 
+import android.content.Context;
+import android.database.Cursor;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.view.View;
+import com.Ms.todoreminder.R;
+import it.gmariotti.cardslib.library.internal.Card;
+import it.gmariotti.cardslib.library.internal.CardArrayAdapter;
+import it.gmariotti.cardslib.library.internal.CardHeader;
+import it.gmariotti.cardslib.library.view.CardListView;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 
 /**
@@ -80,4 +89,37 @@ public class ToDo implements Parcelable {
         this.date.set(year, month, day);
     }
 
+    public static void setToDoList(Context context, CardListView listView){
+
+        SQLController dbcon;
+        dbcon = new SQLController(context);
+        dbcon.open();
+
+        // Attach The Data From DataBase Into ListView Using Crusor Adapter
+        Cursor cursor = dbcon.fetch();
+
+        ArrayList<Card> cards = new ArrayList<Card>();
+
+        // looping through all rows and adding to list
+        for (cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()) {
+            // Create a Card
+            Card card = new Card(context);
+            // Create a CardHeader
+            CardHeader header = new CardHeader(context);
+            // Add Header to card
+            header.setTitle(cursor.getString(1));
+            card.setTitle(cursor.getString(2));
+            card.addCardHeader(header);
+
+            cards.add(card);
+        }
+
+        cursor.close();
+
+        CardArrayAdapter mCardArrayAdapter = new CardArrayAdapter(context, cards);
+
+        if (listView!=null){
+            listView.setAdapter(mCardArrayAdapter);
+        }
+    }
 }
