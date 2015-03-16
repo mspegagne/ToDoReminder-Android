@@ -49,8 +49,11 @@ public class SQLController {
                 DBhelper.TODO_DATE_YEAR,
                 DBhelper.TODO_DATE_MONTH,
                 DBhelper.TODO_DATE_DAY };
+
+        String orderBy = "year ASC, month ASC, day ASC";
+
         Cursor cursor = database.query(DBhelper.TABLE_NAME, columns, null,
-                null, null, null, null);
+                null, null, null, orderBy);
         if (cursor != null) {
             cursor.moveToFirst();
         }

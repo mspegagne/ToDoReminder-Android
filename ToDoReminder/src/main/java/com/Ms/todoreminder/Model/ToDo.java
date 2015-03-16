@@ -1,6 +1,8 @@
 package com.Ms.todoreminder.Model;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.database.Cursor;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -90,14 +92,14 @@ public class ToDo implements Parcelable {
         this.date.set(year, month, day);
     }
 
-    public static void setToDoList(final Context context, CardListView listView){
+    public static void setToDoList(final Context context, final CardListView listView){
 
-        SQLController dbcon;
+        final SQLController dbcon;
         dbcon = new SQLController(context);
         dbcon.open();
 
         // Attach The Data From DataBase Into ListView Using Crusor Adapter
-        Cursor cursor = dbcon.fetch();
+        final Cursor cursor = dbcon.fetch();
 
         ArrayList<Card> cards = new ArrayList<Card>();
 
@@ -105,6 +107,9 @@ public class ToDo implements Parcelable {
         for (cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()) {
             // Create a Card
             Card card = new Card(context);
+
+            final int id = cursor.getInt(0);
+
             int year = cursor.getInt(3);
             int month = cursor.getInt(4);
             int day = cursor.getInt(5);
@@ -120,8 +125,23 @@ public class ToDo implements Parcelable {
             //Set onClick listener
             card.setOnClickListener(new Card.OnCardClickListener() {
                 @Override
-                public void onClick(Card card, View view) {
-                    Toast.makeText(view.getContext(), "Clickable card", Toast.LENGTH_LONG).show();
+                public void onClick(Card card, final View view) {
+                    new AlertDialog.Builder(view.getContext())
+                            .setTitle("Manage ToDo")
+                            .setMessage("What do you want ?")
+                            .setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dbcon.delete(id);
+                                    ToDo.setToDoList(context, listView);
+                                }
+                            })
+                            .setNegativeButton("Archive", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    // do nothing
+                                }
+                            })
+                            .setIcon(android.R.drawable.ic_dialog_alert)
+                            .show();
                 }
             });
 
