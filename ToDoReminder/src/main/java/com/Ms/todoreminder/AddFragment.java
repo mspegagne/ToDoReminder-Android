@@ -63,10 +63,13 @@ public class AddFragment extends Fragment implements OnClickListener {
                         new DatePickerDialog.OnDateSetListener() {
 
                             @Override
-                            public void onDateSet(android.widget.DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                            public void onDateSet(android.widget.DatePicker view, int chosenYear, int monthOfYear, int dayOfMonth) {
                                 // Display Selected date in textbox
                                 txtDate.setText(dayOfMonth + "/"
-                                        + (monthOfYear + 1) + "/" + year);
+                                        + (monthOfYear + 1) + "/" + chosenYear);
+                                year = chosenYear;
+                                month = monthOfYear+1;
+                                day = dayOfMonth;
                             }
 
 

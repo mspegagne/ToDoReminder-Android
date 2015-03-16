@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.view.View;
+import android.widget.Toast;
 import com.Ms.todoreminder.R;
 import it.gmariotti.cardslib.library.internal.Card;
 import it.gmariotti.cardslib.library.internal.CardArrayAdapter;
@@ -89,7 +90,7 @@ public class ToDo implements Parcelable {
         this.date.set(year, month, day);
     }
 
-    public static void setToDoList(Context context, CardListView listView){
+    public static void setToDoList(final Context context, CardListView listView){
 
         SQLController dbcon;
         dbcon = new SQLController(context);
@@ -104,12 +105,35 @@ public class ToDo implements Parcelable {
         for (cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()) {
             // Create a Card
             Card card = new Card(context);
+            int year = cursor.getInt(3);
+            int month = cursor.getInt(4);
+            int day = cursor.getInt(5);
+
             // Create a CardHeader
             CardHeader header = new CardHeader(context);
             // Add Header to card
-            header.setTitle(cursor.getString(1));
+            header.setTitle(cursor.getString(1) + "  -  " + month + "/" + day + "/" + year);
             card.setTitle(cursor.getString(2));
+
             card.addCardHeader(header);
+
+            //Set onClick listener
+            card.setOnClickListener(new Card.OnCardClickListener() {
+                @Override
+                public void onClick(Card card, View view) {
+                    Toast.makeText(view.getContext(), "Clickable card", Toast.LENGTH_LONG).show();
+                }
+            });
+
+            /*card.setSwipeable(true);
+
+            //You can set a SwipeListener.
+            card.setOnSwipeListener(new Card.OnSwipeListener() {
+                @Override
+                public void onSwipe(Card card) {
+                    Toast.makeText(context, "Swipable card", Toast.LENGTH_LONG).show();
+                }
+            });*/
 
             cards.add(card);
         }
