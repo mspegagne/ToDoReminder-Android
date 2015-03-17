@@ -30,8 +30,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b149acd3-0135-40df-879f-8dfad5ebbea7" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ToDoReminder/src/main/java/com/Ms/todoreminder/AddFragment.java" afterPath="$PROJECT_DIR$/ToDoReminder/src/main/java/com/Ms/todoreminder/AddFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ToDoReminder/src/main/java/com/Ms/todoreminder/Model/DBhelper.java" afterPath="$PROJECT_DIR$/ToDoReminder/src/main/java/com/Ms/todoreminder/Model/DBhelper.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ToDoReminder/src/main/java/com/Ms/todoreminder/Model/SQLController.java" afterPath="$PROJECT_DIR$/ToDoReminder/src/main/java/com/Ms/todoreminder/Model/SQLController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ToDoReminder/src/main/java/com/Ms/todoreminder/Model/ToDo.java" afterPath="$PROJECT_DIR$/ToDoReminder/src/main/java/com/Ms/todoreminder/Model/ToDo.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ToDoReminder.iml" afterPath="$PROJECT_DIR$/ToDoReminder.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ToDoReminder/src/main/res/layout/fragment_add.xml" afterPath="$PROJECT_DIR$/ToDoReminder/src/main/res/layout/fragment_add.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ToDoReminder/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/ToDoReminder/src/main/res/values/strings.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ToDoReminder.iws" />
@@ -71,7 +76,7 @@
       <file leaf-file-name="fragment_todo.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ToDoReminder/src/main/res/layout/fragment_todo.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.5" vertical-offset="0" max-vertical-offset="300">
+            <state vertical-scroll-proportion="0.0" vertical-offset="195" max-vertical-offset="300">
               <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
               <folding />
             </state>
@@ -84,17 +89,21 @@
       <file leaf-file-name="ToDo.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ToDoReminder/src/main/java/com/Ms/todoreminder/Model/ToDo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6969697" vertical-offset="1554" max-vertical-offset="2445">
-              <caret line="134" column="66" selection-start-line="134" selection-start-column="66" selection-end-line="134" selection-end-column="66" />
+            <state vertical-scroll-proportion="0.6540404" vertical-offset="1631" max-vertical-offset="2610">
+              <caret line="126" column="104" selection-start-line="126" selection-start-column="104" selection-end-line="126" selection-end-column="104" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2592#2598#0" expanded="true" />
-                <element signature="e#3362#4486#0" expanded="true" />
-                <element signature="e#3722#4041#0" expanded="true" />
-                <element signature="e#4040#4041#0" expanded="true" />
-                <element signature="e#4101#4343#0" expanded="true" />
-                <element signature="e#4342#4343#0" expanded="true" />
-                <element signature="e#4485#4486#0" expanded="true" />
+                <element signature="e#1075#1076#0" expanded="true" />
+                <element signature="e#1102#1103#0" expanded="true" />
+                <element signature="e#1134#1135#0" expanded="true" />
+                <element signature="e#1162#1163#0" expanded="true" />
+                <element signature="e#1364#1365#0" expanded="true" />
+                <element signature="e#1388#1389#0" expanded="true" />
+                <element signature="e#1937#1938#0" expanded="true" />
+                <element signature="e#1984#1985#0" expanded="true" />
+                <element signature="e#2054#2055#0" expanded="true" />
+                <element signature="e#2099#2100#0" expanded="true" />
+                <element signature="e#2783#2789#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -103,20 +112,8 @@
       <file leaf-file-name="SQLController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ToDoReminder/src/main/java/com/Ms/todoreminder/Model/SQLController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="474" max-vertical-offset="1155">
-              <caret line="52" column="54" selection-start-line="52" selection-start-column="54" selection-end-line="52" selection-end-column="54" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DBhelper.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ToDoReminder/src/main/java/com/Ms/todoreminder/Model/DBhelper.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="330" max-vertical-offset="780">
-              <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="849" max-vertical-offset="1245">
+              <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -128,9 +125,21 @@
         <entry file="file://$PROJECT_DIR$/ToDoReminder/src/main/java/com/Ms/todoreminder/TodoFragment.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="339" max-vertical-offset="735">
-              <caret line="38" column="82" selection-start-line="38" selection-start-column="82" selection-end-line="39" selection-end-column="55" />
+              <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DBhelper.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ToDoReminder/src/main/java/com/Ms/todoreminder/Model/DBhelper.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="459" max-vertical-offset="855">
+              <caret line="31" column="35" selection-start-line="31" selection-start-column="35" selection-end-line="31" selection-end-column="35" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#1552#1553#0" expanded="true" />
+                <element signature="e#1592#1593#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -139,7 +148,7 @@
       <file leaf-file-name="fragment_history.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ToDoReminder/src/main/res/layout/fragment_history.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.2" vertical-offset="249" max-vertical-offset="615">
+            <state vertical-scroll-proportion="0.0" vertical-offset="249" max-vertical-offset="615">
               <caret line="25" column="18" selection-start-line="25" selection-start-column="18" selection-end-line="32" selection-end-column="49" />
               <folding />
             </state>
@@ -152,7 +161,7 @@
       <file leaf-file-name="activity_main.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ToDoReminder/src/main/res/layout/activity_main.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.0" vertical-offset="0" max-vertical-offset="180">
+            <state vertical-scroll-proportion="0.0" vertical-offset="90" max-vertical-offset="180">
               <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
               <folding />
             </state>
@@ -165,8 +174,8 @@
       <file leaf-file-name="fragment_add.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ToDoReminder/src/main/res/layout/fragment_add.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.5" vertical-offset="0" max-vertical-offset="1125">
-              <caret line="7" column="56" selection-start-line="7" selection-start-column="56" selection-end-line="7" selection-end-column="56" />
+            <state vertical-scroll-proportion="-9.7" vertical-offset="594" max-vertical-offset="1290">
+              <caret line="59" column="41" selection-start-line="59" selection-start-column="41" selection-end-line="59" selection-end-column="41" />
               <folding />
             </state>
           </provider>
@@ -178,14 +187,12 @@
       <file leaf-file-name="AddFragment.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ToDoReminder/src/main/java/com/Ms/todoreminder/AddFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1479" max-vertical-offset="2190">
-              <caret line="123" column="78" selection-start-line="123" selection-start-column="78" selection-end-line="123" selection-end-column="78" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1674" max-vertical-offset="2310">
+              <caret line="38" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1489#2701#0" expanded="true" />
-                <element signature="e#1987#2629#0" expanded="true" />
-                <element signature="e#2628#2629#0" expanded="true" />
-                <element signature="e#2700#2701#0" expanded="true" />
+                <element signature="e#3871#4124#0" expanded="true" />
+                <element signature="e#4123#4124#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -1000,9 +1007,9 @@
                 <option name="name" value="prepareComAndroidSupportSupportV42103Library" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Prepare com.beardedhen:androidbootstrap:1.2.0" />
+                <option name="description" value="Prepare com.beardedhen:androidbootstrap:1.2.1" />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/ToDoReminder" />
-                <option name="name" value="prepareComBeardedhenAndroidbootstrap120Library" />
+                <option name="name" value="prepareComBeardedhenAndroidbootstrap121Library" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="description" value="Prepare com.etsy.android.grid:library:1.0.5" />
@@ -1279,8 +1286,8 @@
                             <option value="/Applications/adt-bundle-mac-x86_64-20140702/sdk/extras/android/m2repository/com/android/support/support-v4/21.0.3/support-v4-21.0.3-sources.jar" />
                             <option value="/Applications/adt-bundle-mac-x86_64-20140702/sdk/extras/android/m2repository/com/android/support/support-v4/21.0.3/support-v4-21.0.3.aar" />
                             <option value="/Applications/adt-bundle-mac-x86_64-20140702/sdk/extras/android/m2repository/com/android/support/appcompat-v7/21.0.3/appcompat-v7-21.0.3.aar" />
-                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.beardedhen/androidbootstrap/1.2.0/421d69f9f14ee4f4f225a96d597ef8f0c75d399d/androidbootstrap-1.2.0-sources.jar" />
-                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.beardedhen/androidbootstrap/1.2.0/dc81d2245aaf92c7bb15ddf4eb8ce2167e2e5433/androidbootstrap-1.2.0.aar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.beardedhen/androidbootstrap/1.2.1/f895ac33f65ae4e5707f57358cfd87af4672d01d/androidbootstrap-1.2.1-sources.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.beardedhen/androidbootstrap/1.2.1/2c82be4cd68f6f96b4c5cc89026aab08c92e6c38/androidbootstrap-1.2.1.aar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.gabrielemariotti.cards/cardslib-core/2.0.1/369f7b19915130ebc0afdf3712436a5a4f4ce5ad/cardslib-core-2.0.1-sources.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.gabrielemariotti.cards/cardslib-core/2.0.1/1ae523d05711337b1c2022f1f9e66770728abd7d/cardslib-core-2.0.1.aar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.gabrielemariotti.cards/cardslib-cards/2.0.1/61ce057b30cf104a9b9b1c1090cd48d86e2c114f/cardslib-cards-2.0.1-sources.jar" />
@@ -1440,14 +1447,14 @@
         <option value="$PROJECT_DIR$/ToDoReminder/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/ToDoReminder/build.gradle" />
         <option value="$PROJECT_DIR$/ToDoReminder/src/main/java/com/Ms/todoreminder/MainActivity.java" />
-        <option value="$PROJECT_DIR$/ToDoReminder/src/main/res/layout/fragment_add.xml" />
-        <option value="$PROJECT_DIR$/ToDoReminder/src/main/java/com/Ms/todoreminder/Model/DBhelper.java" />
         <option value="$PROJECT_DIR$/ToDoReminder/src/main/res/layout/todo.xml" />
         <option value="$PROJECT_DIR$/ToDoReminder/src/main/java/com/Ms/todoreminder/TodoFragment.java" />
         <option value="$PROJECT_DIR$/ToDoReminder/src/main/res/layout/fragment_history.xml" />
         <option value="$PROJECT_DIR$/ToDoReminder/src/main/res/layout/fragment_todo.xml" />
         <option value="$PROJECT_DIR$/ToDoReminder/src/main/java/com/Ms/todoreminder/AddFragment.java" />
         <option value="$PROJECT_DIR$/ToDoReminder/src/main/java/com/Ms/todoreminder/Model/SQLController.java" />
+        <option value="$PROJECT_DIR$/ToDoReminder/src/main/java/com/Ms/todoreminder/Model/DBhelper.java" />
+        <option value="$PROJECT_DIR$/ToDoReminder/src/main/res/layout/fragment_add.xml" />
         <option value="$PROJECT_DIR$/ToDoReminder/src/main/java/com/Ms/todoreminder/Model/ToDo.java" />
       </list>
     </option>
@@ -1501,8 +1508,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -1757,6 +1762,8 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -2097,12 +2104,14 @@
       <workItem from="1426057587335" duration="265000" />
       <workItem from="1426057859123" duration="904000" />
       <workItem from="1426059385076" duration="21913000" />
-      <workItem from="1426308754836" duration="22983000" />
+      <workItem from="1426308754836" duration="24014000" />
+      <workItem from="1426559552040" duration="1995000" />
+      <workItem from="1426585970774" duration="2100000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="53375000" />
+    <option name="totallyTimeSpent" value="58501000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -2150,8 +2159,8 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.329653" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39905363" sideWeight="0.39579967" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24959612" sideWeight="0.5013123" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32649842" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33123028" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3254717" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33123028" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24959612" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -2192,6 +2201,30 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/ToDoReminder/src/main/java/com/Ms/todoreminder/AddFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2310">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3871#4124#0" expanded="true" />
+            <element signature="e#4123#4124#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ToDoReminder/src/main/java/com/Ms/todoreminder/AddFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1479" max-vertical-offset="2190">
+          <caret line="123" column="78" selection-start-line="123" selection-start-column="78" selection-end-line="123" selection-end-column="78" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3871#4124#0" expanded="true" />
+            <element signature="e#4123#4124#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/ToDoReminder/src/main/res/layout/fragment_todo.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="21" max-vertical-offset="480">
@@ -2236,7 +2269,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="615" max-vertical-offset="750">
           <caret line="41" column="46" selection-start-line="41" selection-start-column="46" selection-end-line="41" selection-end-column="46" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2295,7 +2327,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="615" max-vertical-offset="750">
           <caret line="41" column="46" selection-start-line="41" selection-start-column="46" selection-end-line="41" selection-end-column="46" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2354,7 +2385,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="735">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2375,7 +2405,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="735">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2383,7 +2412,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="100">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2391,7 +2419,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="735">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2399,7 +2426,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="735">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2407,7 +2433,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="285" max-vertical-offset="735">
           <caret line="34" column="9" selection-start-line="34" selection-start-column="9" selection-end-line="34" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2422,7 +2447,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="285" max-vertical-offset="735">
           <caret line="34" column="9" selection-start-line="34" selection-start-column="9" selection-end-line="34" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2484,7 +2508,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="330">
           <caret line="18" column="8" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2516,7 +2539,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="353">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2524,21 +2546,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.11585366" vertical-offset="412" max-vertical-offset="1035">
           <caret line="30" column="16" selection-start-line="30" selection-start-column="16" selection-end-line="30" selection-end-column="16" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="400">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///private/var/folders/cw/kj_d4f8d3ng5ssv_wmfk12tm0000gn/T/dumpsys-com.globile.mycontactbackup0.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="396">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
@@ -2558,19 +2571,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ToDoReminder/src/main/res/layout/activity_main.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.0" vertical-offset="0" max-vertical-offset="180">
+        <state vertical-scroll-proportion="0.0" vertical-offset="90" max-vertical-offset="180">
           <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ToDoReminder/src/main/res/layout/fragment_add.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.5" vertical-offset="0" max-vertical-offset="1125">
-          <caret line="7" column="56" selection-start-line="7" selection-start-column="56" selection-end-line="7" selection-end-column="56" />
           <folding />
         </state>
       </provider>
@@ -2580,7 +2582,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ToDoReminder/src/main/res/layout/fragment_history.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.2" vertical-offset="249" max-vertical-offset="615">
+        <state vertical-scroll-proportion="0.0" vertical-offset="249" max-vertical-offset="615">
           <caret line="25" column="18" selection-start-line="25" selection-start-column="18" selection-end-line="32" selection-end-column="49" />
           <folding />
         </state>
@@ -2589,44 +2591,55 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ToDoReminder/src/main/java/com/Ms/todoreminder/AddFragment.java">
+    <entry file="file://$PROJECT_DIR$/ToDoReminder/src/main/res/layout/fragment_todo.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1479" max-vertical-offset="2190">
-          <caret line="123" column="78" selection-start-line="123" selection-start-column="78" selection-end-line="123" selection-end-column="78" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="195" max-vertical-offset="300">
+          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ToDoReminder/src/main/java/com/Ms/todoreminder/Model/SQLController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="849" max-vertical-offset="1245">
+          <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1489#2701#0" expanded="true" />
-            <element signature="e#1987#2629#0" expanded="true" />
-            <element signature="e#2628#2629#0" expanded="true" />
-            <element signature="e#2700#2701#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ToDoReminder/src/main/java/com/Ms/todoreminder/Model/DBhelper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="330" max-vertical-offset="780">
-          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="459" max-vertical-offset="855">
+          <caret line="31" column="35" selection-start-line="31" selection-start-column="35" selection-end-line="31" selection-end-column="35" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1552#1553#0" expanded="true" />
+            <element signature="e#1592#1593#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ToDoReminder/src/main/java/com/Ms/todoreminder/Model/SQLController.java">
+    <entry file="file://$PROJECT_DIR$/ToDoReminder/src/main/java/com/Ms/todoreminder/AddFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="759" max-vertical-offset="1155">
-          <caret line="52" column="54" selection-start-line="52" selection-start-column="54" selection-end-line="52" selection-end-column="54" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1674" max-vertical-offset="2310">
+          <caret line="38" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#3871#4124#0" expanded="true" />
+            <element signature="e#4123#4124#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ToDoReminder/src/main/res/layout/fragment_todo.xml">
+    <entry file="file://$PROJECT_DIR$/ToDoReminder/src/main/res/layout/fragment_add.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.5" vertical-offset="0" max-vertical-offset="300">
-          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+        <state vertical-scroll-proportion="-9.7" vertical-offset="594" max-vertical-offset="1290">
+          <caret line="59" column="41" selection-start-line="59" selection-start-column="41" selection-end-line="59" selection-end-column="41" />
           <folding />
         </state>
       </provider>
@@ -2636,27 +2649,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ToDoReminder/src/main/java/com/Ms/todoreminder/TodoFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="339" max-vertical-offset="735">
-          <caret line="38" column="82" selection-start-line="38" selection-start-column="82" selection-end-line="39" selection-end-column="55" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.0" vertical-offset="129" max-vertical-offset="735">
+          <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ToDoReminder/src/main/java/com/Ms/todoreminder/Model/ToDo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6969697" vertical-offset="1554" max-vertical-offset="2445">
-          <caret line="134" column="66" selection-start-line="134" selection-start-column="66" selection-end-line="134" selection-end-column="66" />
+        <state vertical-scroll-proportion="0.6540404" vertical-offset="1631" max-vertical-offset="2610">
+          <caret line="126" column="104" selection-start-line="126" selection-start-column="104" selection-end-line="126" selection-end-column="104" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2592#2598#0" expanded="true" />
-            <element signature="e#3362#4486#0" expanded="true" />
-            <element signature="e#3722#4041#0" expanded="true" />
-            <element signature="e#4040#4041#0" expanded="true" />
-            <element signature="e#4101#4343#0" expanded="true" />
-            <element signature="e#4342#4343#0" expanded="true" />
-            <element signature="e#4485#4486#0" expanded="true" />
+            <element signature="e#1075#1076#0" expanded="true" />
+            <element signature="e#1102#1103#0" expanded="true" />
+            <element signature="e#1134#1135#0" expanded="true" />
+            <element signature="e#1162#1163#0" expanded="true" />
+            <element signature="e#1364#1365#0" expanded="true" />
+            <element signature="e#1388#1389#0" expanded="true" />
+            <element signature="e#1937#1938#0" expanded="true" />
+            <element signature="e#1984#1985#0" expanded="true" />
+            <element signature="e#2054#2055#0" expanded="true" />
+            <element signature="e#2099#2100#0" expanded="true" />
+            <element signature="e#2783#2789#0" expanded="true" />
           </folding>
         </state>
       </provider>

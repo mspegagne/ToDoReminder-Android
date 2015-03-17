@@ -22,17 +22,20 @@ public class DBhelper extends SQLiteOpenHelper {
     public static final String TODO_DATE_YEAR = "year";
     public static final String TODO_DATE_MONTH = "month";
     public static final String TODO_DATE_DAY = "day";
+    public static final String TODO_HISTORY = "history";
+    public static final String TODO_NOTIF = "notif";
 
     // Database Information
     static final String DB_NAME = "TODOREMINDER.DB";
 
     // database version
-    static final int DB_VERSION = 1;
+    static final int DB_VERSION = 2;
 
     // Creating table query
     private static final String CREATE_TABLE = "create table " + TABLE_NAME + "(" + _ID
             + " INTEGER PRIMARY KEY AUTOINCREMENT, " + TODO_TITLE + " TEXT NOT NULL, " + TODO_TEXT + " TEXT,"
-            + TODO_DATE_YEAR + " INT NOT NULL," + TODO_DATE_MONTH + " INT NOT NULL," + TODO_DATE_DAY + " INT NOT NULL);";
+            + TODO_DATE_YEAR + " INT NOT NULL," + TODO_DATE_MONTH + " INT NOT NULL," + TODO_DATE_DAY + " INT NOT NULL,"
+            + TODO_HISTORY + " INT NOT NULL," + TODO_NOTIF + " INT NOT NULL);";
 
     public DBhelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);

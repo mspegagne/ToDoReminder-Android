@@ -52,6 +52,17 @@
                 bootstrapbutton:be_state="success"
                 />
 
+        <CheckBox
+                android:id="@+id/addNotif"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/addDate"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="0dp"
+                android:textSize="20sp"
+                android:checked="true"
+                android:text="@string/checkNotif" />
+
         <!-- basic button -->
         <com.beardedhen.androidbootstrap.BootstrapButton
                 android:id="@+id/Save"
@@ -63,7 +74,7 @@
                 bootstrap:bb_icon_left="fa-hand-o-right"
                 bootstrap:bb_type="success"
                 android:textSize="20sp"
-                android:layout_below="@id/addDate"
+                android:layout_below="@id/addNotif"
                 />
 
     </RelativeLayout>

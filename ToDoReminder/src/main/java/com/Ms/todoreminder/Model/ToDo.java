@@ -7,8 +7,6 @@ import android.database.Cursor;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.view.View;
-import android.widget.Toast;
-import com.Ms.todoreminder.R;
 import it.gmariotti.cardslib.library.internal.Card;
 import it.gmariotti.cardslib.library.internal.CardArrayAdapter;
 import it.gmariotti.cardslib.library.internal.CardHeader;
@@ -26,11 +24,15 @@ public class ToDo implements Parcelable {
     private String title;
     private String text;
     private Calendar date;
+    private Boolean history;
+    private Boolean notif;
 
-    public ToDo(String title, String text, Calendar date) {
+    public ToDo(String title, String text, Calendar date, Boolean history, Boolean notif) {
         this.title = title;
         this.text = text;
         this.date = date;
+        this.history = history;
+        this.notif = notif;
     }
 
     public String getText() {
@@ -42,6 +44,10 @@ public class ToDo implements Parcelable {
     }
 
     public Calendar getDate() { return date; }
+
+    public Boolean getNotif() { return notif; }
+
+    public Boolean getHistory() { return history; }
 
 
     @Override
@@ -118,7 +124,7 @@ public class ToDo implements Parcelable {
             CardHeader header = new CardHeader(context);
             // Add Header to card
             header.setTitle(cursor.getString(1) + "  -  " + month + "/" + day + "/" + year);
-            card.setTitle(cursor.getString(2));
+            card.setTitle(cursor.getString(2)+ "History :" +cursor.getInt(6)+ "Notify :" +cursor.getInt(7));
 
             card.addCardHeader(header);
 

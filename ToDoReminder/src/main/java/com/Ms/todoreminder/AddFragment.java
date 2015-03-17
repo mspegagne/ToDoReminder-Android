@@ -8,6 +8,7 @@ package com.Ms.todoreminder;
 import android.content.DialogInterface;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.widget.CheckBox;
 import android.widget.Toast;
 import com.Ms.todoreminder.Model.SQLController;
 import com.Ms.todoreminder.Model.ToDo;
@@ -31,6 +32,7 @@ public class AddFragment extends Fragment implements OnClickListener {
     private EditText txtDate = null;
     private EditText editTitle = null;
     private EditText editText = null;
+    private CheckBox addNotif = null;
     private BootstrapButton save = null;
 
     private SQLController dbController;
@@ -38,6 +40,8 @@ public class AddFragment extends Fragment implements OnClickListener {
     private int year, month, day;
     private String text = null;
     private String title = null;
+    private Boolean history = false;
+    private Boolean notif = true;
 
 
 
@@ -100,6 +104,19 @@ public class AddFragment extends Fragment implements OnClickListener {
             }
         });
 
+
+        addNotif = (CheckBox)AddView.findViewById(R.id.addNotif);
+        addNotif.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (((CheckBox) v).isChecked()) {
+                    notif = true;
+                } else
+                    notif = false;
+            }
+        });
+
+
         save = (BootstrapButton) AddView.findViewById(R.id.Save);
         save.setOnClickListener(this);
 
@@ -119,9 +136,10 @@ public class AddFragment extends Fragment implements OnClickListener {
                 Calendar date = Calendar.getInstance();
                 date.set(year, month, day);
 
-                ToDo add = new ToDo(title, text, date);
 
-                long res = dbController.insert(title, text, year, month, day);
+                ToDo add = new ToDo(title, text, date, history, notif);
+
+                long res = dbController.insert(title, text, year, month, day, history, notif);
 
                 CardListView listView = (CardListView) getActivity().findViewById(R.id.myList);
                 ToDo.setToDoList(this.getActivity(), listView);
