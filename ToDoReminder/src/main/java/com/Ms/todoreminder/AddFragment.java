@@ -141,8 +141,10 @@ public class AddFragment extends Fragment implements OnClickListener {
 
                 long res = dbController.insert(title, text, year, month, day, history, notif);
 
-                CardListView listView = (CardListView) getActivity().findViewById(R.id.myList);
-                ToDo.setToDoList(this.getActivity(), listView);
+                CardListView listViewTodo = (CardListView) getActivity().findViewById(R.id.myListToDo);
+                CardListView listViewHistory = (CardListView) getActivity().findViewById(R.id.myListHistory);
+
+               // ToDo.setToDoList(this.getActivity(), listViewTodo, listViewHistory);
 
                 if(res == -1)
                     Toast.makeText(v.getContext(), "Error", Toast.LENGTH_SHORT).show();

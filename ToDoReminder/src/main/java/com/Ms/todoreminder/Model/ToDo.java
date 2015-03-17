@@ -7,6 +7,7 @@ import android.database.Cursor;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.view.View;
+import com.Ms.todoreminder.R;
 import it.gmariotti.cardslib.library.internal.Card;
 import it.gmariotti.cardslib.library.internal.CardArrayAdapter;
 import it.gmariotti.cardslib.library.internal.CardHeader;
@@ -43,11 +44,17 @@ public class ToDo implements Parcelable {
         return title;
     }
 
-    public Calendar getDate() { return date; }
+    public Calendar getDate() {
+        return date;
+    }
 
-    public Boolean getNotif() { return notif; }
+    public Boolean getNotif() {
+        return notif;
+    }
 
-    public Boolean getHistory() { return history; }
+    public Boolean getHistory() {
+        return history;
+    }
 
 
     @Override
@@ -69,17 +76,14 @@ public class ToDo implements Parcelable {
         dest.writeInt(day);
     }
 
-    public static final Parcelable.Creator<ToDo> CREATOR = new Parcelable.Creator<ToDo>()
-    {
+    public static final Parcelable.Creator<ToDo> CREATOR = new Parcelable.Creator<ToDo>() {
         @Override
-        public ToDo createFromParcel(Parcel source)
-        {
+        public ToDo createFromParcel(Parcel source) {
             return new ToDo(source);
         }
 
         @Override
-        public ToDo[] newArray(int size)
-        {
+        public ToDo[] newArray(int size) {
             return new ToDo[size];
         }
     };
@@ -98,33 +102,35 @@ public class ToDo implements Parcelable {
         this.date.set(year, month, day);
     }
 
-    public static void setToDoList(final Context context, final CardListView listView){
+    public static ArrayList<Card> getCardList(final Context context, Boolean history) {
 
         final SQLController dbcon;
         dbcon = new SQLController(context);
         dbcon.open();
 
-        // Attach The Data From DataBase Into ListView Using Crusor Adapter
         final Cursor cursor = dbcon.fetch();
+        ArrayList<Card> cardsToDo = new ArrayList<Card>();
+        ArrayList<Card> cardsHistory = new ArrayList<Card>();
 
-        ArrayList<Card> cards = new ArrayList<Card>();
-
-        // looping through all rows and adding to list
         for (cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()) {
-            // Create a Card
-            Card card = new Card(context);
 
             final int id = cursor.getInt(0);
-
             int year = cursor.getInt(3);
             int month = cursor.getInt(4);
             int day = cursor.getInt(5);
+            int historyCardInt = cursor.getInt(6);
+            Boolean historyCard = false;
+            if (historyCardInt == 1)
+                historyCard = true;
+
+            // Create a Card
+            Card card = new Card(context);
 
             // Create a CardHeader
             CardHeader header = new CardHeader(context);
             // Add Header to card
             header.setTitle(cursor.getString(1) + "  -  " + month + "/" + day + "/" + year);
-            card.setTitle(cursor.getString(2)+ "History :" +cursor.getInt(6)+ "Notify :" +cursor.getInt(7));
+            card.setTitle(cursor.getString(2) + "History :" + cursor.getInt(6) + "Notify :" + cursor.getInt(7));
 
             card.addCardHeader(header);
 
@@ -134,16 +140,17 @@ public class ToDo implements Parcelable {
                 public void onClick(Card card, final View view) {
                     new AlertDialog.Builder(view.getContext())
                             .setTitle("Manage ToDo")
-                            .setMessage("What do you want ?")
+                            .setMessage("What do you want to do?")
                             .setPositiveButton("Delete", new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int which) {
                                     dbcon.delete(id);
-                                    ToDo.setToDoList(context, listView);
+                                   // ToDo.setToDoList(context, listViewTodo, listViewHistory);
                                 }
                             })
                             .setNegativeButton("Archive", new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int which) {
-                                    // do nothing
+                                    dbcon.archive(id);
+                                  //  ToDo.setToDoList(context, listViewTodo, listViewHistory);
                                 }
                             })
                             .setIcon(android.R.drawable.ic_dialog_alert)
@@ -161,15 +168,19 @@ public class ToDo implements Parcelable {
                 }
             });*/
 
-            cards.add(card);
+            if (historyCard)
+                cardsHistory.add(card);
+            else
+                cardsToDo.add(card);
+
         }
 
         cursor.close();
 
-        CardArrayAdapter mCardArrayAdapter = new CardArrayAdapter(context, cards);
+        if (history)
+            return cardsHistory;
+        else
+            return cardsToDo;
 
-        if (listView!=null){
-            listView.setAdapter(mCardArrayAdapter);
-        }
     }
 }

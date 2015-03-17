@@ -78,6 +78,13 @@ public class SQLController {
         return i;
     }
 
+    public int archive(long _id) {
+        ContentValues args = new ContentValues();
+        args.put(DBhelper.TODO_HISTORY, true);
+        int i =  database.update(DBhelper.TABLE_NAME, args, DBhelper._ID + " = " + _id, null);
+        return i;
+    }
+
     public void delete(long _id) {
         database.delete(DBhelper.TABLE_NAME, DBhelper._ID + "=" + _id, null);
     }
