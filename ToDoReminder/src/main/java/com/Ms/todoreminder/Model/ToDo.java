@@ -1,5 +1,6 @@
 package com.Ms.todoreminder.Model;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -102,7 +103,7 @@ public class ToDo implements Parcelable {
         this.date.set(year, month, day);
     }
 
-    public static ArrayList<Card> getCardList(final Context context, Boolean history) {
+    public static ArrayList<Card> getCardList(final Context context, final Activity activity, Boolean history) {
 
         final SQLController dbcon;
         dbcon = new SQLController(context);
@@ -144,13 +145,46 @@ public class ToDo implements Parcelable {
                             .setPositiveButton("Delete", new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int which) {
                                     dbcon.delete(id);
-                                   // ToDo.setToDoList(context, listViewTodo, listViewHistory);
+
+                                    CardListView listViewTodo = (CardListView) activity.findViewById(R.id.myListToDo);
+
+                                    ArrayList<Card> cardListT = ToDo.getCardList(context, activity, false);
+
+                                    CardArrayAdapter mCardToDoArrayAdapter = new CardArrayAdapter(context, cardListT);
+                                    if (listViewTodo!=null){
+                                        listViewTodo.setAdapter(mCardToDoArrayAdapter);
+                                    }
+
+                                    CardListView listViewHistory = (CardListView) activity.findViewById(R.id.myListHistory);
+
+                                    ArrayList<Card> cardListH = ToDo.getCardList(context, activity, true);
+
+                                    CardArrayAdapter mCardHistoryArrayAdapter = new CardArrayAdapter(context, cardListH);
+                                    if (listViewHistory!=null){
+                                        listViewHistory.setAdapter(mCardHistoryArrayAdapter);
+                                    }
                                 }
                             })
                             .setNegativeButton("Archive", new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int which) {
                                     dbcon.archive(id);
-                                  //  ToDo.setToDoList(context, listViewTodo, listViewHistory);
+                                    CardListView listViewTodo = (CardListView) activity.findViewById(R.id.myListToDo);
+
+                                    ArrayList<Card> cardListT = ToDo.getCardList(context, activity, false);
+
+                                    CardArrayAdapter mCardToDoArrayAdapter = new CardArrayAdapter(context, cardListT);
+                                    if (listViewTodo!=null){
+                                        listViewTodo.setAdapter(mCardToDoArrayAdapter);
+                                    }
+
+                                    CardListView listViewHistory = (CardListView) activity.findViewById(R.id.myListHistory);
+
+                                    ArrayList<Card> cardListH = ToDo.getCardList(context, activity, true);
+
+                                    CardArrayAdapter mCardHistoryArrayAdapter = new CardArrayAdapter(context, cardListH);
+                                    if (listViewHistory!=null){
+                                        listViewHistory.setAdapter(mCardHistoryArrayAdapter);
+                                    }
                                 }
                             })
                             .setIcon(android.R.drawable.ic_dialog_alert)

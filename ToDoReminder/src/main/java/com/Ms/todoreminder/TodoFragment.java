@@ -30,7 +30,7 @@ public class TodoFragment extends Fragment {
 
         CardListView listViewTodo = (CardListView) ToDoView.findViewById(R.id.myListToDo);
 
-        ArrayList<Card> cardList = ToDo.getCardList(getActivity(), false);
+        ArrayList<Card> cardList = ToDo.getCardList(getActivity(), getActivity(), false);
 
         CardArrayAdapter mCardToDoArrayAdapter = new CardArrayAdapter(getActivity(), cardList);
         if (listViewTodo!=null){

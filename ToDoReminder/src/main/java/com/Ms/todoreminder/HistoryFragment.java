@@ -28,7 +28,7 @@ public class HistoryFragment extends Fragment {
 
         CardListView listViewHistory = (CardListView) HistoryView.findViewById(R.id.myListHistory);
 
-        ArrayList<Card> cardList = ToDo.getCardList(getActivity(), true);
+        ArrayList<Card> cardList = ToDo.getCardList(getActivity(), getActivity(), true);
 
         CardArrayAdapter mCardHistoryArrayAdapter = new CardArrayAdapter(getActivity(), cardList);
         if (listViewHistory!=null) {

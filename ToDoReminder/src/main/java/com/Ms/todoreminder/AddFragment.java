@@ -23,8 +23,11 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import com.beardedhen.androidbootstrap.BootstrapButton;
+import it.gmariotti.cardslib.library.internal.Card;
+import it.gmariotti.cardslib.library.internal.CardArrayAdapter;
 import it.gmariotti.cardslib.library.view.CardListView;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 
 public class AddFragment extends Fragment implements OnClickListener {
@@ -142,9 +145,13 @@ public class AddFragment extends Fragment implements OnClickListener {
                 long res = dbController.insert(title, text, year, month, day, history, notif);
 
                 CardListView listViewTodo = (CardListView) getActivity().findViewById(R.id.myListToDo);
-                CardListView listViewHistory = (CardListView) getActivity().findViewById(R.id.myListHistory);
 
-               // ToDo.setToDoList(this.getActivity(), listViewTodo, listViewHistory);
+                ArrayList<Card> cardList = ToDo.getCardList(getActivity(), getActivity(), false);
+
+                CardArrayAdapter mCardToDoArrayAdapter = new CardArrayAdapter(getActivity(), cardList);
+                if (listViewTodo!=null){
+                    listViewTodo.setAdapter(mCardToDoArrayAdapter);
+                }
 
                 if(res == -1)
                     Toast.makeText(v.getContext(), "Error", Toast.LENGTH_SHORT).show();
