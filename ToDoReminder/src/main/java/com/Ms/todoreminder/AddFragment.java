@@ -45,14 +45,13 @@ public class AddFragment extends Fragment implements OnClickListener {
     private Boolean notif = true;
 
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        final View AddView =  inflater.inflate(R.layout.fragment_add, container, false);
+        final View AddView = inflater.inflate(R.layout.fragment_add, container, false);
 
-        txtDate = (EditText)AddView.findViewById(R.id.addDate);
+        txtDate = (EditText) AddView.findViewById(R.id.addDate);
         txtDate.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -73,7 +72,7 @@ public class AddFragment extends Fragment implements OnClickListener {
                                 txtDate.setText(dayOfMonth + "/"
                                         + (monthOfYear + 1) + "/" + chosenYear);
                                 year = chosenYear;
-                                month = monthOfYear+1;
+                                month = monthOfYear + 1;
                                 day = dayOfMonth;
                             }
 
@@ -83,16 +82,20 @@ public class AddFragment extends Fragment implements OnClickListener {
             }
         });
 
-        editText = (EditText)AddView.findViewById(R.id.addText);
-        editText.addTextChangedListener(new TextWatcher(){
+        editText = (EditText) AddView.findViewById(R.id.addText);
+        editText.addTextChangedListener(new TextWatcher() {
             public void afterTextChanged(Editable s) {
                 text = editText.getText().toString();
             }
-            public void beforeTextChanged(CharSequence s, int start, int count, int after){}
-            public void onTextChanged(CharSequence s, int start, int before, int count){}
+
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
         });
 
-        editTitle = (EditText)AddView.findViewById(R.id.addTitle);
+        editTitle = (EditText) AddView.findViewById(R.id.addTitle);
         editTitle.addTextChangedListener(new TextWatcher() {
             public void afterTextChanged(Editable s) {
                 title = editTitle.getText().toString();
@@ -106,7 +109,7 @@ public class AddFragment extends Fragment implements OnClickListener {
         });
 
 
-        addNotif = (CheckBox)AddView.findViewById(R.id.addNotif);
+        addNotif = (CheckBox) AddView.findViewById(R.id.addNotif);
         addNotif.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -137,27 +140,46 @@ public class AddFragment extends Fragment implements OnClickListener {
                 Calendar date = Calendar.getInstance();
                 date.set(year, month, day);
 
+                if (title == null
+                        || text == null
+                        || year == 0
+                        || month == 0
+                        || day == 0) {
+                    Toast.makeText(v.getContext(), "All Fields Required", Toast.LENGTH_SHORT).show();
+                } else {
 
-                ToDo add = new ToDo(title, text, date, history, notif);
+                    long res = dbController.insert(title, text, year, month, day, history, notif);
 
-                long res = dbController.insert(title, text, year, month, day, history, notif);
+                    CardListView listViewTodo = (CardListView) getActivity().findViewById(R.id.myListToDo);
 
-                CardListView listViewTodo = (CardListView) getActivity().findViewById(R.id.myListToDo);
+                    ArrayList<Card> cardList = ToDo.getCardList(getActivity(), getActivity(), false);
 
-                ArrayList<Card> cardList = ToDo.getCardList(getActivity(), getActivity(), false);
+                    CardArrayAdapter mCardToDoArrayAdapter = new CardArrayAdapter(getActivity(), cardList);
+                    if (listViewTodo != null) {
+                        listViewTodo.setAdapter(mCardToDoArrayAdapter);
+                    }
 
-                CardArrayAdapter mCardToDoArrayAdapter = new CardArrayAdapter(getActivity(), cardList);
-                if (listViewTodo!=null){
-                    listViewTodo.setAdapter(mCardToDoArrayAdapter);
+                    if (res == -1)
+                        Toast.makeText(v.getContext(), "Error", Toast.LENGTH_SHORT).show();
+                    else
+                        Toast.makeText(v.getContext(), "Saved", Toast.LENGTH_SHORT).show();
+
+                    //RAZ form
+                    txtDate.setText(null);
+                    editText.setText(null);
+                    editTitle.setText(null);
+                    addNotif.setChecked(true);
+
+                    year = 0;
+                    month = 0;
+                    day = 0;
+                    text = null;
+                    title = null;
+                    notif = true;
+
+                    //Change frag
+                    MainActivity.mViewPager.setCurrentItem(1);
                 }
-
-                if(res == -1)
-                    Toast.makeText(v.getContext(), "Error", Toast.LENGTH_SHORT).show();
-                else
-                    Toast.makeText(v.getContext(), "Saved", Toast.LENGTH_SHORT).show();
-
-                MainActivity.mViewPager.setCurrentItem(1);
-
                 break;
         }
     }
