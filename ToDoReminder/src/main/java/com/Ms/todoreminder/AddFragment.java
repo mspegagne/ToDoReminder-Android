@@ -5,7 +5,6 @@ package com.Ms.todoreminder;
  * @author https://github.com/mspegagne
  */
 
-import android.content.DialogInterface;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.CheckBox;
@@ -20,7 +19,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
-import android.widget.Button;
 import android.widget.EditText;
 import com.beardedhen.androidbootstrap.BootstrapButton;
 import it.gmariotti.cardslib.library.internal.Card;
@@ -158,13 +156,7 @@ public class AddFragment extends Fragment implements OnClickListener {
                 else
                     Toast.makeText(v.getContext(), "Saved", Toast.LENGTH_SHORT).show();
 
-
-                //Intent intent = new Intent(MainActivity.this, DisplayActivity.class);
-                //intent.putExtra("data", data);
-                //startActivity(intent);
-
-
-                //switchFragment(Fragment.TAG);
+                MainActivity.mViewPager.setCurrentItem(1);
 
                 break;
         }

@@ -8,6 +8,7 @@ import android.database.Cursor;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.view.View;
+import com.Ms.todoreminder.MainActivity;
 import com.Ms.todoreminder.R;
 import it.gmariotti.cardslib.library.internal.Card;
 import it.gmariotti.cardslib.library.internal.CardArrayAdapter;
@@ -185,6 +186,8 @@ public class ToDo implements Parcelable {
                                     if (listViewHistory!=null){
                                         listViewHistory.setAdapter(mCardHistoryArrayAdapter);
                                     }
+
+                                    MainActivity.mViewPager.setCurrentItem(0);
                                 }
                             })
                             .setIcon(android.R.drawable.ic_dialog_alert)
