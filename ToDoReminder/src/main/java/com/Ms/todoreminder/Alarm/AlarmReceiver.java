@@ -1,15 +1,16 @@
 package com.Ms.todoreminder.Alarm;
 
+/**
+ * @author SPEGAGNE Mathieu on 19/03/15.
+ * @author https://github.com/mspegagne
+ */
+
 import android.app.NotificationManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import com.Ms.todoreminder.Model.ToDo;
 
-/**
- * @author SPEGAGNE Mathieu on 19/03/15.
- * @author https://github.com/mspegagne
- */
 public class AlarmReceiver extends BroadcastReceiver {
 
     NotificationManager notificationManager;

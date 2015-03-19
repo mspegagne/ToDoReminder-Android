@@ -1,5 +1,10 @@
 package com.Ms.todoreminder.Controller;
 
+/**
+ * @author SPEGAGNE Mathieu on 13/03/15.
+ * @author https://github.com/mspegagne
+ */
+
 import java.util.Calendar;
 import java.util.Locale;
 
@@ -7,7 +12,6 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -191,7 +195,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
     public static void deleteAlarm(Context context, int id){
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(ALARM_SERVICE);
         Intent alarmIntent = new Intent(context, AlarmReceiver.class);
-        alarmIntent.addCategory(""+id);
+        alarmIntent.addCategory("" + id);
 
         PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, alarmIntent, PendingIntent.FLAG_CANCEL_CURRENT);
         alarmManager.cancel(pendingIntent);

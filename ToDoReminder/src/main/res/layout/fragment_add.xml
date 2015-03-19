@@ -71,7 +71,7 @@
                 android:layout_margin="20dp"
                 android:text="@string/save_button"
                 android:layout_centerHorizontal="true"
-                bootstrap:bb_icon_left="fa-hand-o-right"
+                bootstrap:bb_icon_left="fa-rocket"
                 bootstrap:bb_type="success"
                 android:textSize="20sp"
                 android:layout_below="@id/addNotif"

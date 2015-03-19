@@ -1,15 +1,18 @@
 package com.Ms.todoreminder.Model;
 
+/**
+ * @author SPEGAGNE Mathieu on 13/03/15.
+ * @author https://github.com/mspegagne
+ */
+
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.NotificationManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.database.Cursor;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.view.View;
-import com.Ms.todoreminder.Alarm.AlarmService;
 import com.Ms.todoreminder.DataBase.SQLController;
 import com.Ms.todoreminder.Controller.MainActivity;
 import com.Ms.todoreminder.R;
@@ -21,10 +24,6 @@ import it.gmariotti.cardslib.library.view.CardListView;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-/**
- * @author SPEGAGNE Mathieu on 13/03/15.
- * @author https://github.com/mspegagne
- */
 public class ToDo implements Parcelable {
 
     private String title;
@@ -148,7 +147,7 @@ public class ToDo implements Parcelable {
             CardHeader header = new CardHeader(context);
             // Add Header to card
             header.setTitle(cursor.getString(1) + "  -  " + month + "/" + day + "/" + year);
-            card.setTitle(cursor.getString(2) + "History :" + cursor.getInt(6) + "Notify :" + cursor.getInt(7));
+            card.setTitle(cursor.getString(2));
 
             card.addCardHeader(header);
 

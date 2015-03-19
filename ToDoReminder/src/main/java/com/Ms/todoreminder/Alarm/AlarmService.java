@@ -1,5 +1,10 @@
 package com.Ms.todoreminder.Alarm;
 
+/**
+ * @author SPEGAGNE Mathieu on 19/03/15.
+ * @author https://github.com/mspegagne
+ */
+
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
@@ -11,10 +16,6 @@ import com.Ms.todoreminder.Controller.MainActivity;
 import com.Ms.todoreminder.Model.ToDo;
 import com.Ms.todoreminder.R;
 
-/**
- * @author SPEGAGNE Mathieu on 19/03/15.
- * @author https://github.com/mspegagne
- */
 public class AlarmService extends Service {
     private NotificationManager notificationManager;
     private PendingIntent pendingIntent;
