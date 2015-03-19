@@ -1,15 +1,16 @@
-package com.Ms.todoreminder;
+package com.Ms.todoreminder.Controller;
 
 /**
  * @author SPEGAGNE Mathieu on 11/03/15.
  * @author https://github.com/mspegagne
  */
 
+import android.app.AlarmManager;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.CheckBox;
 import android.widget.Toast;
-import com.Ms.todoreminder.Model.SQLController;
+import com.Ms.todoreminder.DataBase.SQLController;
 import com.Ms.todoreminder.Model.ToDo;
 
 import android.app.DatePickerDialog;
@@ -20,6 +21,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
+import com.Ms.todoreminder.R;
 import com.beardedhen.androidbootstrap.BootstrapButton;
 import it.gmariotti.cardslib.library.internal.Card;
 import it.gmariotti.cardslib.library.internal.CardArrayAdapter;
@@ -37,6 +39,7 @@ public class AddFragment extends Fragment implements OnClickListener {
     private BootstrapButton save = null;
 
     private SQLController dbController;
+    private AlarmManager am;
 
     private int year, month, day;
     private String text = null;
@@ -137,9 +140,6 @@ public class AddFragment extends Fragment implements OnClickListener {
         switch (v.getId()) {
             case R.id.Save:
 
-                Calendar date = Calendar.getInstance();
-                date.set(year, month, day);
-
                 if (title == null
                         || text == null
                         || year == 0
@@ -159,10 +159,26 @@ public class AddFragment extends Fragment implements OnClickListener {
                         listViewTodo.setAdapter(mCardToDoArrayAdapter);
                     }
 
-                    if (res == -1)
+                    if (res == -1) {
                         Toast.makeText(v.getContext(), "Error", Toast.LENGTH_SHORT).show();
-                    else
+                    } else {
                         Toast.makeText(v.getContext(), "Saved", Toast.LENGTH_SHORT).show();
+                        //Set Notification
+                        if (notif) {
+                            Calendar date = Calendar.getInstance();
+                            month = month -1;
+                            date.set(year, month , day);
+
+                            date.set(Calendar.HOUR_OF_DAY, 10);
+                            date.set(Calendar.MINUTE, 15);
+                            date.set(Calendar.SECOND, 0);
+
+                            ToDo todo = new ToDo(title, text, date, history, notif);
+
+                            MainActivity.setAlarm(v.getContext(), todo, (int) res);
+
+                        }
+                    }
 
                     //RAZ form
                     txtDate.setText(null);
@@ -183,4 +199,5 @@ public class AddFragment extends Fragment implements OnClickListener {
                 break;
         }
     }
+
 }

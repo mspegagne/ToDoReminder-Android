@@ -1,7 +1,13 @@
-package com.Ms.todoreminder;
+package com.Ms.todoreminder.Controller;
 
+import java.util.Calendar;
 import java.util.Locale;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -10,12 +16,11 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
+import com.Ms.todoreminder.Alarm.AlarmReceiver;
+import com.Ms.todoreminder.Model.ToDo;
+import com.Ms.todoreminder.R;
 
 import static com.Ms.todoreminder.R.*;
 
@@ -36,6 +41,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
      * The {@link ViewPager} that will host the section contents.
      */
     public static ViewPager mViewPager;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -163,7 +169,32 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
                     return getString(string.title_section3).toUpperCase(l);
             }
             return null;
+
+
         }
     }
+    public static void setAlarm(Context context, ToDo todo, int id){
+        AlarmManager alarmManager = (AlarmManager) context.getSystemService(ALARM_SERVICE);
+        Intent alarmIntent = new Intent(context, AlarmReceiver.class);
+        alarmIntent.putExtra("todo", todo);
+        alarmIntent.putExtra("id", id);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, alarmIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+        Calendar alarmStartTime = todo.getDate();
+        alarmStartTime.set(Calendar.HOUR_OF_DAY, 10);
+        alarmStartTime.set(Calendar.MINUTE, 00);
+        alarmStartTime.set(Calendar.SECOND, 0);
+        alarmManager.setRepeating(AlarmManager.RTC, alarmStartTime.getTimeInMillis(), getInterval(), pendingIntent);
+    }
+    private static int getInterval(){
+        int days = 1;
+        int hours = 24;
+        int minutes = 60;
+        int seconds = 60;
+        int milliseconds = 1000;
+        int repeatMS =   seconds * milliseconds;
+        return repeatMS;
+    }
+
 
 }

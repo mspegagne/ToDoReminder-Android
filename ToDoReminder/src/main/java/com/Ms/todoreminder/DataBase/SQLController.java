@@ -1,4 +1,4 @@
-package com.Ms.todoreminder.Model;
+package com.Ms.todoreminder.DataBase;
 
 /**
  * @author SPEGAGNE Mathieu on 14/03/15.
@@ -9,7 +9,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
-import android.widget.Toast;
 
 public class SQLController {
 

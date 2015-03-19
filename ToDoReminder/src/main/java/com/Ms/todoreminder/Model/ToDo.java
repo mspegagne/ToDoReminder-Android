@@ -2,13 +2,16 @@ package com.Ms.todoreminder.Model;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.NotificationManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.database.Cursor;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.view.View;
-import com.Ms.todoreminder.MainActivity;
+import com.Ms.todoreminder.Alarm.AlarmService;
+import com.Ms.todoreminder.DataBase.SQLController;
+import com.Ms.todoreminder.Controller.MainActivity;
 import com.Ms.todoreminder.R;
 import it.gmariotti.cardslib.library.internal.Card;
 import it.gmariotti.cardslib.library.internal.CardArrayAdapter;
@@ -36,6 +39,14 @@ public class ToDo implements Parcelable {
         this.date = date;
         this.history = history;
         this.notif = notif;
+    }
+
+    public ToDo(String title, String text, Calendar date) {
+        this.title = title;
+        this.text = text;
+        this.date = date;
+        this.history = false;
+        this.notif = true;
     }
 
     public String getText() {
@@ -125,6 +136,11 @@ public class ToDo implements Parcelable {
             if (historyCardInt == 1)
                 historyCard = true;
 
+            int notifyCardInt = cursor.getInt(7);
+            Boolean notify = false;
+            if (notifyCardInt == 1)
+                notify = true;
+
             // Create a Card
             Card card = new Card(context);
 
@@ -137,6 +153,7 @@ public class ToDo implements Parcelable {
             card.addCardHeader(header);
 
             //Set onClick listener
+            final Boolean finalNotify = notify;
             card.setOnClickListener(new Card.OnCardClickListener() {
                 @Override
                 public void onClick(Card card, final View view) {
@@ -152,7 +169,7 @@ public class ToDo implements Parcelable {
                                     ArrayList<Card> cardListT = ToDo.getCardList(context, activity, false);
 
                                     CardArrayAdapter mCardToDoArrayAdapter = new CardArrayAdapter(context, cardListT);
-                                    if (listViewTodo!=null){
+                                    if (listViewTodo != null) {
                                         listViewTodo.setAdapter(mCardToDoArrayAdapter);
                                     }
 
@@ -161,8 +178,13 @@ public class ToDo implements Parcelable {
                                     ArrayList<Card> cardListH = ToDo.getCardList(context, activity, true);
 
                                     CardArrayAdapter mCardHistoryArrayAdapter = new CardArrayAdapter(context, cardListH);
-                                    if (listViewHistory!=null){
+                                    if (listViewHistory != null) {
                                         listViewHistory.setAdapter(mCardHistoryArrayAdapter);
+                                    }
+
+                                    if (finalNotify) {
+                                        NotificationManager notificationManager = (NotificationManager)context.getSystemService(context.NOTIFICATION_SERVICE);
+                                        notificationManager.cancel(id);
                                     }
                                 }
                             })
@@ -174,7 +196,7 @@ public class ToDo implements Parcelable {
                                     ArrayList<Card> cardListT = ToDo.getCardList(context, activity, false);
 
                                     CardArrayAdapter mCardToDoArrayAdapter = new CardArrayAdapter(context, cardListT);
-                                    if (listViewTodo!=null){
+                                    if (listViewTodo != null) {
                                         listViewTodo.setAdapter(mCardToDoArrayAdapter);
                                     }
 
@@ -183,10 +205,13 @@ public class ToDo implements Parcelable {
                                     ArrayList<Card> cardListH = ToDo.getCardList(context, activity, true);
 
                                     CardArrayAdapter mCardHistoryArrayAdapter = new CardArrayAdapter(context, cardListH);
-                                    if (listViewHistory!=null){
+                                    if (listViewHistory != null) {
                                         listViewHistory.setAdapter(mCardHistoryArrayAdapter);
                                     }
-
+                                    if (finalNotify) {
+                                        NotificationManager notificationManager = (NotificationManager)context.getSystemService(context.NOTIFICATION_SERVICE);
+                                        notificationManager.cancel(id);
+                                    }
                                     MainActivity.mViewPager.setCurrentItem(0);
                                 }
                             })

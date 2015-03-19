@@ -1,4 +1,4 @@
-package com.Ms.todoreminder.Model;
+package com.Ms.todoreminder.DataBase;
 
 /**
  * @author SPEGAGNE Mathieu on 14/03/15.
