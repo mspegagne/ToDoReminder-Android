@@ -176,23 +176,35 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
     public static void setAlarm(Context context, ToDo todo, int id){
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(ALARM_SERVICE);
         Intent alarmIntent = new Intent(context, AlarmReceiver.class);
+        alarmIntent.addCategory(""+id);
         alarmIntent.putExtra("todo", todo);
         alarmIntent.putExtra("id", id);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, alarmIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, alarmIntent, PendingIntent.FLAG_CANCEL_CURRENT);
 
         Calendar alarmStartTime = todo.getDate();
-        alarmStartTime.set(Calendar.HOUR_OF_DAY, 10);
+        alarmStartTime.set(Calendar.HOUR_OF_DAY, 8);
         alarmStartTime.set(Calendar.MINUTE, 00);
         alarmStartTime.set(Calendar.SECOND, 0);
         alarmManager.setRepeating(AlarmManager.RTC, alarmStartTime.getTimeInMillis(), getInterval(), pendingIntent);
     }
+
+    public static void deleteAlarm(Context context, int id){
+        AlarmManager alarmManager = (AlarmManager) context.getSystemService(ALARM_SERVICE);
+        Intent alarmIntent = new Intent(context, AlarmReceiver.class);
+        alarmIntent.addCategory(""+id);
+
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, alarmIntent, PendingIntent.FLAG_CANCEL_CURRENT);
+        alarmManager.cancel(pendingIntent);
+    }
+
+
     private static int getInterval(){
         int days = 1;
         int hours = 24;
         int minutes = 60;
         int seconds = 60;
         int milliseconds = 1000;
-        int repeatMS =   seconds * milliseconds;
+        int repeatMS =   days * hours * minutes * seconds * milliseconds;
         return repeatMS;
     }
 

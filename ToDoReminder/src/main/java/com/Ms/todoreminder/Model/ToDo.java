@@ -183,8 +183,7 @@ public class ToDo implements Parcelable {
                                     }
 
                                     if (finalNotify) {
-                                        NotificationManager notificationManager = (NotificationManager)context.getSystemService(context.NOTIFICATION_SERVICE);
-                                        notificationManager.cancel(id);
+                                            MainActivity.deleteAlarm(context, id);
                                     }
                                 }
                             })
@@ -209,8 +208,7 @@ public class ToDo implements Parcelable {
                                         listViewHistory.setAdapter(mCardHistoryArrayAdapter);
                                     }
                                     if (finalNotify) {
-                                        NotificationManager notificationManager = (NotificationManager)context.getSystemService(context.NOTIFICATION_SERVICE);
-                                        notificationManager.cancel(id);
+                                            MainActivity.deleteAlarm(context, id);
                                     }
                                     MainActivity.mViewPager.setCurrentItem(0);
                                 }
