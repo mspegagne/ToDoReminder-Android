@@ -13,9 +13,11 @@ import android.database.Cursor;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.view.View;
+
 import com.Ms.todoreminder.DataBase.SQLController;
 import com.Ms.todoreminder.Controller.MainActivity;
 import com.Ms.todoreminder.R;
+
 import it.gmariotti.cardslib.library.internal.Card;
 import it.gmariotti.cardslib.library.internal.CardArrayAdapter;
 import it.gmariotti.cardslib.library.internal.CardHeader;
@@ -24,6 +26,9 @@ import it.gmariotti.cardslib.library.view.CardListView;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+/**
+ * To Do Modelisation + Generation of list
+ */
 public class ToDo implements Parcelable {
 
     private String title;
@@ -38,14 +43,6 @@ public class ToDo implements Parcelable {
         this.date = date;
         this.history = history;
         this.notif = notif;
-    }
-
-    public ToDo(String title, String text, Calendar date) {
-        this.title = title;
-        this.text = text;
-        this.date = date;
-        this.history = false;
-        this.notif = true;
     }
 
     public String getText() {
@@ -112,10 +109,18 @@ public class ToDo implements Parcelable {
 
         this.date = Calendar.getInstance();
         this.date.set(year, month, day);
+
+        //We use parcel for alarm so that means history is false and notif is true
+        this.history = false;
+        this.notif = true;
     }
 
+    /**
+     * @return ArrayList<Card> for printing in Fragment
+     */
     public static ArrayList<Card> getCardList(final Context context, final Activity activity, Boolean history) {
 
+        //Initialisation of the db
         final SQLController dbcon;
         dbcon = new SQLController(context);
         dbcon.open();
@@ -126,10 +131,14 @@ public class ToDo implements Parcelable {
 
         for (cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()) {
 
+            //Get Data from db
             final int id = cursor.getInt(0);
+            String title = cursor.getString(1);
+            String text = cursor.getString(2);
             int year = cursor.getInt(3);
             int month = cursor.getInt(4);
             int day = cursor.getInt(5);
+
             int historyCardInt = cursor.getInt(6);
             Boolean historyCard = false;
             if (historyCardInt == 1)
@@ -146,8 +155,8 @@ public class ToDo implements Parcelable {
             // Create a CardHeader
             CardHeader header = new CardHeader(context);
             // Add Header to card
-            header.setTitle(cursor.getString(1) + "  -  " + month + "/" + day + "/" + year);
-            card.setTitle(cursor.getString(2));
+            header.setTitle(title + "  -  " + month + "/" + day + "/" + year);
+            card.setTitle(text);
 
             card.addCardHeader(header);
 
@@ -182,7 +191,7 @@ public class ToDo implements Parcelable {
                                     }
 
                                     if (finalNotify) {
-                                            MainActivity.deleteAlarm(context, id);
+                                        MainActivity.deleteAlarm(context, id);
                                     }
                                 }
                             })
@@ -207,7 +216,7 @@ public class ToDo implements Parcelable {
                                         listViewHistory.setAdapter(mCardHistoryArrayAdapter);
                                     }
                                     if (finalNotify) {
-                                            MainActivity.deleteAlarm(context, id);
+                                        MainActivity.deleteAlarm(context, id);
                                     }
                                     MainActivity.mViewPager.setCurrentItem(0);
                                 }
@@ -217,16 +226,7 @@ public class ToDo implements Parcelable {
                 }
             });
 
-            /*card.setSwipeable(true);
-
-            //You can set a SwipeListener.
-            card.setOnSwipeListener(new Card.OnSwipeListener() {
-                @Override
-                public void onSwipe(Card card) {
-                    Toast.makeText(context, "Swipable card", Toast.LENGTH_LONG).show();
-                }
-            });*/
-
+            //Save in the list
             if (historyCard)
                 cardsHistory.add(card);
             else
@@ -236,6 +236,7 @@ public class ToDo implements Parcelable {
 
         cursor.close();
 
+        //Return the asked list
         if (history)
             return cardsHistory;
         else

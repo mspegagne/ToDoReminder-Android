@@ -5,14 +5,10 @@ package com.Ms.todoreminder.Controller;
  * @author https://github.com/mspegagne
  */
 
-import android.app.AlarmManager;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.CheckBox;
 import android.widget.Toast;
-import com.Ms.todoreminder.DataBase.SQLController;
-import com.Ms.todoreminder.Model.ToDo;
-
 import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -21,8 +17,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
+
 import com.Ms.todoreminder.R;
+import com.Ms.todoreminder.DataBase.SQLController;
+import com.Ms.todoreminder.Model.ToDo;
+
 import com.beardedhen.androidbootstrap.BootstrapButton;
+
 import it.gmariotti.cardslib.library.internal.Card;
 import it.gmariotti.cardslib.library.internal.CardArrayAdapter;
 import it.gmariotti.cardslib.library.view.CardListView;
@@ -30,6 +31,9 @@ import it.gmariotti.cardslib.library.view.CardListView;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+/**
+ * Add Fragment Controller
+ */
 public class AddFragment extends Fragment implements OnClickListener {
 
     private EditText txtDate = null;
@@ -39,7 +43,6 @@ public class AddFragment extends Fragment implements OnClickListener {
     private BootstrapButton save = null;
 
     private SQLController dbController;
-    private AlarmManager am;
 
     private int year, month, day;
     private String text = null;
@@ -54,18 +57,17 @@ public class AddFragment extends Fragment implements OnClickListener {
 
         final View AddView = inflater.inflate(R.layout.fragment_add, container, false);
 
+        //Dat Picker Dialog
         txtDate = (EditText) AddView.findViewById(R.id.addDate);
         txtDate.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                // Process to get Current Date
                 final Calendar c = Calendar.getInstance();
                 year = c.get(Calendar.YEAR);
                 month = c.get(Calendar.MONTH);
                 day = c.get(Calendar.DAY_OF_MONTH);
 
-                // Launch Date Picker Dialog
                 DatePickerDialog dpd = new DatePickerDialog(getView().getContext(),
                         new DatePickerDialog.OnDateSetListener() {
 
@@ -85,6 +87,7 @@ public class AddFragment extends Fragment implements OnClickListener {
             }
         });
 
+        //Edit Text listener
         editText = (EditText) AddView.findViewById(R.id.addText);
         editText.addTextChangedListener(new TextWatcher() {
             public void afterTextChanged(Editable s) {
@@ -98,6 +101,7 @@ public class AddFragment extends Fragment implements OnClickListener {
             }
         });
 
+        //Edit Title listener
         editTitle = (EditText) AddView.findViewById(R.id.addTitle);
         editTitle.addTextChangedListener(new TextWatcher() {
             public void afterTextChanged(Editable s) {
@@ -111,7 +115,7 @@ public class AddFragment extends Fragment implements OnClickListener {
             }
         });
 
-
+        //Checkbox Notif listener
         addNotif = (CheckBox) AddView.findViewById(R.id.addNotif);
         addNotif.setOnClickListener(new OnClickListener() {
             @Override
@@ -140,6 +144,7 @@ public class AddFragment extends Fragment implements OnClickListener {
         switch (v.getId()) {
             case R.id.Save:
 
+                //Form Verification
                 if (title == null
                         || text == null
                         || year == 0
@@ -148,29 +153,32 @@ public class AddFragment extends Fragment implements OnClickListener {
                     Toast.makeText(v.getContext(), "All Fields Required", Toast.LENGTH_SHORT).show();
                 } else {
 
+                    //Save in the db
                     long res = dbController.insert(title, text, year, month, day, history, notif);
 
+                    //Update views
                     CardListView listViewTodo = (CardListView) getActivity().findViewById(R.id.myListToDo);
-
                     ArrayList<Card> cardList = ToDo.getCardList(getActivity(), getActivity(), false);
-
                     CardArrayAdapter mCardToDoArrayAdapter = new CardArrayAdapter(getActivity(), cardList);
+
                     if (listViewTodo != null) {
                         listViewTodo.setAdapter(mCardToDoArrayAdapter);
                     }
 
+                    //Display confirmation message
                     if (res == -1) {
                         Toast.makeText(v.getContext(), "Error", Toast.LENGTH_SHORT).show();
                     } else {
                         Toast.makeText(v.getContext(), "Saved", Toast.LENGTH_SHORT).show();
+
                         //Set Notification
                         if (notif) {
-                            Calendar date = Calendar.getInstance();
-                            month = month -1;
-                            date.set(year, month , day);
 
-                            date.set(Calendar.HOUR_OF_DAY, 10);
-                            date.set(Calendar.MINUTE, 15);
+                            month = month - 1;
+                            Calendar date = Calendar.getInstance();
+                            date.set(year, month, day);
+                            date.set(Calendar.HOUR_OF_DAY, 8);
+                            date.set(Calendar.MINUTE, 00);
                             date.set(Calendar.SECOND, 0);
 
                             ToDo todo = new ToDo(title, text, date, history, notif);
@@ -180,7 +188,7 @@ public class AddFragment extends Fragment implements OnClickListener {
                         }
                     }
 
-                    //RAZ form
+                    //Reinitialization Form
                     txtDate.setText(null);
                     editText.setText(null);
                     editTitle.setText(null);

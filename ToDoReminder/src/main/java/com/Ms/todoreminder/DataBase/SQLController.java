@@ -4,12 +4,16 @@ package com.Ms.todoreminder.DataBase;
  * @author SPEGAGNE Mathieu on 14/03/15.
  * @author https://github.com/mspegagne
  */
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
+/**
+ * SQL Controller to manage the DB
+ */
 public class SQLController {
 
     private DBhelper dbHelper;
@@ -40,11 +44,11 @@ public class SQLController {
         contentValue.put(DBhelper.TODO_DATE_DAY, day);
         contentValue.put(DBhelper.TODO_HISTORY, history);
         contentValue.put(DBhelper.TODO_NOTIF, notif);
-       return database.insert(DBhelper.TABLE_NAME, null, contentValue);
+        return database.insert(DBhelper.TABLE_NAME, null, contentValue);
     }
 
     public Cursor fetch() {
-        String[] columns = new String[] {
+        String[] columns = new String[]{
                 DBhelper._ID,
                 DBhelper.TODO_TITLE,
                 DBhelper.TODO_TEXT,
@@ -52,7 +56,7 @@ public class SQLController {
                 DBhelper.TODO_DATE_MONTH,
                 DBhelper.TODO_DATE_DAY,
                 DBhelper.TODO_HISTORY,
-                DBhelper.TODO_NOTIF };
+                DBhelper.TODO_NOTIF};
 
         String orderBy = "year ASC, month ASC, day ASC";
 
@@ -81,8 +85,7 @@ public class SQLController {
     public int archive(long _id) {
         ContentValues args = new ContentValues();
         args.put(DBhelper.TODO_HISTORY, true);
-        int i =  database.update(DBhelper.TABLE_NAME, args, DBhelper._ID + " = " + _id, null);
-        return i;
+        return database.update(DBhelper.TABLE_NAME, args, DBhelper._ID + " = " + _id, null);
     }
 
     public void delete(long _id) {

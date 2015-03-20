@@ -12,11 +12,16 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.IBinder;
 import android.support.v4.app.NotificationCompat;
+
 import com.Ms.todoreminder.Controller.MainActivity;
 import com.Ms.todoreminder.Model.ToDo;
 import com.Ms.todoreminder.R;
 
+/**
+ * Alarm Service make the notification
+ */
 public class AlarmService extends Service {
+
     private NotificationManager notificationManager;
     private PendingIntent pendingIntent;
 
@@ -31,12 +36,14 @@ public class AlarmService extends Service {
     public void onStart(Intent intent, int startId)
     {
         super.onStart(intent, startId);
-        int id = intent.getExtras().getInt("id");
 
+        //Get Data from the AlarmReceiver
+        int id = intent.getExtras().getInt("id");
         ToDo todo = intent.getExtras().getParcelable("todo");
         String title = todo.getTitle();
         String text = todo.getText();
 
+        //Make the notification
         Context context = this.getApplicationContext();
         notificationManager = (NotificationManager)context.getSystemService(context.NOTIFICATION_SERVICE);
         Intent mIntent = new Intent(this, MainActivity.class);
@@ -47,6 +54,7 @@ public class AlarmService extends Service {
         builder.setSmallIcon(R.drawable.ic_launcher);
         builder.setContentIntent(pendingIntent);
 
+        //Display the notification
         notificationManager = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
         notificationManager.notify(id, builder.build());
     }

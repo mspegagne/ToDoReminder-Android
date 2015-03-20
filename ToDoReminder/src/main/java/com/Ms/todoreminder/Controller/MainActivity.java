@@ -22,30 +22,20 @@ import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.MenuItem;
+
 import com.Ms.todoreminder.Alarm.AlarmReceiver;
 import com.Ms.todoreminder.Model.ToDo;
 import com.Ms.todoreminder.R;
 
 import static com.Ms.todoreminder.R.*;
 
-
+/**
+ * Main Activity controller, Fragment Manager, Alarm Manager
+ */
 public class MainActivity extends ActionBarActivity implements ActionBar.TabListener {
 
-    /**
-     * The {@link android.support.v4.view.PagerAdapter} that will provide
-     * fragments for each of the sections. We use a
-     * {@link FragmentPagerAdapter} derivative, which will keep every
-     * loaded fragment in memory. If this becomes too memory intensive, it
-     * may be best to switch to a
-     * {@link android.support.v4.app.FragmentStatePagerAdapter}.
-     */
     public static SectionsPagerAdapter mSectionsPagerAdapter;
-
-    /**
-     * The {@link ViewPager} that will host the section contents.
-     */
     public static ViewPager mViewPager;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -143,13 +133,13 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
         public Fragment getItem(int index) {
             switch (index) {
                 case 0:
-                    // Top Rated fragment activity
+                    // History fragment activity
                     return new HistoryFragment();
                 case 1:
-                    // Games fragment activity
+                    // To Do fragment activity
                     return new TodoFragment();
                 case 2:
-                    // Movies fragment activity
+                    // Add To Do fragment activity
                     return new AddFragment();
             }
             return null;
@@ -173,43 +163,43 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
                     return getString(string.title_section3).toUpperCase(l);
             }
             return null;
-
-
         }
     }
-    public static void setAlarm(Context context, ToDo todo, int id){
+
+    //Set Alarm to display the reminder notification
+    public static void setAlarm(Context context, ToDo todo, int id) {
+        //Get the alarm manager
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(ALARM_SERVICE);
+        //Set the notification intent
         Intent alarmIntent = new Intent(context, AlarmReceiver.class);
-        alarmIntent.addCategory(""+id);
+        //Category is here to differentiate two alarm intent
+        alarmIntent.addCategory("" + id);
         alarmIntent.putExtra("todo", todo);
         alarmIntent.putExtra("id", id);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, alarmIntent, PendingIntent.FLAG_CANCEL_CURRENT);
-
+        //Set the alarm
         Calendar alarmStartTime = todo.getDate();
-        alarmStartTime.set(Calendar.HOUR_OF_DAY, 8);
-        alarmStartTime.set(Calendar.MINUTE, 00);
-        alarmStartTime.set(Calendar.SECOND, 0);
         alarmManager.setRepeating(AlarmManager.RTC, alarmStartTime.getTimeInMillis(), getInterval(), pendingIntent);
     }
 
-    public static void deleteAlarm(Context context, int id){
+    //Delete an alarm
+    public static void deleteAlarm(Context context, int id) {
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(ALARM_SERVICE);
         Intent alarmIntent = new Intent(context, AlarmReceiver.class);
+        //the alarmManager doesn't care about Extras, only Category. cf IntentFilterEquals
         alarmIntent.addCategory("" + id);
-
         PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, alarmIntent, PendingIntent.FLAG_CANCEL_CURRENT);
         alarmManager.cancel(pendingIntent);
     }
 
-
-    private static int getInterval(){
+    //Set the interval for repeating
+    private static int getInterval() {
         int days = 1;
         int hours = 24;
         int minutes = 60;
         int seconds = 60;
         int milliseconds = 1000;
-        int repeatMS =   days * hours * minutes * seconds * milliseconds;
-        return repeatMS;
+        return days * hours * minutes * seconds * milliseconds;
     }
 
 
