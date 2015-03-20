@@ -51,7 +51,7 @@ public class AlarmService extends Service {
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this);
         builder.setContentTitle(title);
         builder.setContentText(text);
-        builder.setSmallIcon(R.drawable.ic_launcher);
+        builder.setSmallIcon(R.drawable.icon);
         builder.setContentIntent(pendingIntent);
 
         //Display the notification

@@ -178,7 +178,7 @@ public class AddFragment extends Fragment implements OnClickListener {
                             Calendar date = Calendar.getInstance();
                             date.set(year, month, day);
                             date.set(Calendar.HOUR_OF_DAY, 8);
-                            date.set(Calendar.MINUTE, 00);
+                            date.set(Calendar.MINUTE, 0);
                             date.set(Calendar.SECOND, 0);
 
                             ToDo todo = new ToDo(title, text, date, history, notif);
