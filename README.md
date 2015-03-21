@@ -10,12 +10,12 @@ The official app can also be found on the [Play Store](https://play.google.com/s
 
 ### Dependencies
 
-The Dependencies are implements with Gradle.
+The dependencies are implemented with Gradle.
 
 * Card Library provides an easy way to display a UI Card using the Official Google CardView in your Android app :
 https://github.com/gabrielemariotti/cardslib
 
-* Bootstrap project for Android, add the style of the Bootsrap web library to an Android App :
+* Bootstrap project for Android add the style of the Bootsrap web Library to an Android App :
 https://github.com/gabrielemariotti/cardslib
 
 ### Features
